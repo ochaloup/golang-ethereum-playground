@@ -1,0 +1,5 @@
+= Golang playground
+
+1. How to connect with golang to Geth
++
+https://www.quicknode.com/guides/web3-sdks/how-to-connect-to-ethereum-network-using-go
