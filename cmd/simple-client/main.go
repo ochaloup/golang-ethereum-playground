@@ -9,9 +9,10 @@ import (
 )
 
 const (
-	ETH_NODE_URL = "http://127.0.0.1:30303"
+	ETH_NODE_URL = "http://127.0.0.1:8545"
 )
 
+// Connecting to
 func main() {
 
 	client, err := ethclient.Dial(ETH_NODE_URL)
@@ -21,11 +22,14 @@ func main() {
 	} else {
 		fmt.Println("Success! you are connected to the Ethereum Network")
 	}
+	defer client.Close()
 
 	header, err := client.HeaderByNumber(context.Background(), nil)
+	// id, err := client.ChainID(context.Background())
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("Cannot get the chain id", err)
 	} else {
-		fmt.Println(header.Number.String())
+		fmt.Printf("hash id %d\n", header)
 	}
+
 }
